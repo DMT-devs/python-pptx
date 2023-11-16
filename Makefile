@@ -2,8 +2,9 @@ BEHAVE = behave
 MAKE   = make
 PYTHON = python
 SETUP  = $(PYTHON) ./setup.py
+TWINE  = $(PYTHON) -m twine
 
-.PHONY: accept clean cleandocs coverage docs readme sdist upload
+.PHONY: accept build clean cleandocs coverage docs opendocs
 
 help:
 	@echo "Please use \`make <target>' where <target> is one or more of"
@@ -19,6 +20,10 @@ help:
 
 accept:
 	$(BEHAVE) --stop
+
+build:
+	rm -rf dist
+	$(SETUP) bdist_wheel sdist
 
 clean:
 	find . -type f -name \*.pyc -exec rm {} \;
@@ -37,8 +42,8 @@ docs:
 opendocs:
 	open docs/.build/html/index.html
 
-sdist:
-	$(SETUP) sdist
+test-upload: build
+	$(TWINE) upload --repository testpypi dist/*
 
-upload:
-	$(SETUP) sdist upload
+upload: clean build
+	$(TWINE) upload dist/*
