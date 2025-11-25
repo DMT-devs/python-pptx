@@ -3,6 +3,27 @@
 Release History
 ---------------
 
+1.0.2 (2024-08-07)
+++++++++++++++++++
+
+- fix: #1003 restore read-only enum members
+
+1.0.1 (2024-08-05)
+++++++++++++++++++
+
+- fix: #1000 add py.typed
+
+
+1.0.0 (2024-08-03)
+++++++++++++++++++
+
+- fix: #929 raises on JPEG with image/jpg MIME-type
+- fix: #943 remove mention of a Px Length subtype
+- fix: #972 next-slide-id fails in rare cases
+- fix: #990 do not require strict timestamps for Zip
+- Add type annotations
+
+
 0.6.23 (2023-11-02)
 +++++++++++++++++++
 
